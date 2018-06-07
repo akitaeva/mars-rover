@@ -1,7 +1,9 @@
 // Rover Object Goes Here
 // ======================
 var rover = {
-  direction: 'N'
+  direction: 'N',
+  x: 0,
+  y: 0
 }
 
 // ======================
@@ -21,6 +23,7 @@ function turnLeft(rover){
    rover.direction = 'N'
    break;
   }
+  console.log("the rover is going " + rover.direction);
 }
 
 function turnRight(rover){
@@ -39,8 +42,35 @@ function turnRight(rover){
     rover.direction = 'N'
     break;
    }
+  console.log("the rover is going " + rover.direction);
 }
 
 function moveForward(rover){
   console.log("moveForward was called")
+  if (rover.direction == 'E' && rover.x == 9 ) {
+    rover.x = 0
+  }
+  else if (rover.direction == 'W' && rover.x == 0 ) {
+    rover.x = 9
+  }
+  else if (rover.direction == 'N' && rover.y == 0 ) {
+    rover.y = 9
+  }
+  else if (rover.direction == 'S' && rover.y == 9 ) {
+    rover.y = 0
+  }  
+  else if (rover.direction == 'E' && rover.y !== 9 ) {
+    rover.x += 1;
+  } 
+  else if (rover.direction == 'W' && rover.x !== 0 ) {
+      rover.x -= 1;
+  }
+  else if (rover.direction == 'N' && rover.y !== 0 ) {
+        rover.y -= 1;
+      }
+  else if (rover.direction == 'S' && rover.y !== 9 ) {
+        rover.y += 1; 
+  }
+  console.log(`(${rover.x}, ${rover.y})`);
+
 }
